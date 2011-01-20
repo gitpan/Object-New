@@ -9,12 +9,11 @@ Object::New - A default constructor for standard objects
 
 =head1 VERSION
 
-Version 0.01
+Version 0.02
 
 =cut
 
-our $VERSION = '0.01';
-
+our $VERSION = '0.02';
 
 =head1 SYNOPSIS
 
@@ -71,6 +70,11 @@ This module exports one routine by default: "new"
 
 If you don't want to import this, you don't want to be using this module.
 
+=cut
+
+use Exporter 'import';
+our @EXPORT = qw/new/;
+
 =head1 SUBROUTINES/METHODS
 
 =head2 new
@@ -85,7 +89,7 @@ sub new {
     my $class = shift;
     my $object = {};
     bless $object, $class;
-    if $object->can("init") {
+    if ($object->can("init")) {
         $object->init(@_);
     }
     return $object;
