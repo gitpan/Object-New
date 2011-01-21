@@ -13,16 +13,21 @@ Version 0.02
 
 =cut
 
-our $VERSION = '0.02';
+our $VERSION = '0.03';
 
 =head1 SYNOPSIS
 
 When you want Moose, there is Moose, but when you just want to 
 write "standard" Perl5 OO code, there is a bit of boilerplate, 
-and "->new" is one bit of it. This module just does one thing: provide
+and "->new" is one bit of it. This module just does just one thing: provide
 a sane default constructor you can use for standard Perl5 objects.
-
 (A standard object is here taken to be a blessed hash.)
+
+If you want anything else, there is lots out there: Moose, obviously, 
+but also Object::Tiny, and Rose::Object and many others. This modules is
+simply an exercise in code reuse, and an attempt to avoid a common
+piece of boilerplate.
+
 
 =head1 THE GUTS
 
@@ -61,7 +66,7 @@ To customise object construction, all you have to do is define an init routine:
 
   sub interrogate {
     my $self = shift;
-    say join(", ", $self->name, $self->rank, $self->serial_number), "\n";
+    say join(", ", $self->name, $self->rank, $self->serial_number);
   }
 
 =head1 EXPORT
